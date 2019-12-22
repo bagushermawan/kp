@@ -8,6 +8,11 @@
   <ul class="sidebar-menu">
       <li class="menu-header">Dashboard</li>
       <li class="{{ Request::route()->getName() == 'admin.dashboard' ? ' active' : '' }}"><a class="nav-link" href="{{ route('admin.dashboard') }}"><i class="fa fa-columns"></i> <span>Dashboard</span></a></li>
+
+      <li class="menu-header">List</li>
+      <li class="{{ Request::route()->getName() == 'category' ? ' active' : '' }}"><a class="nav-link" href="{{ route('category') }}"><i class="fa fa-columns"></i> <span>Category</span></a></li>
+      <li class="{{ Request::route()->getName() == 'product' ? ' active' : '' }}"><a class="nav-link" href="{{ route('category') }}"><i class="fa fa-columns"></i> <span>Product</span></a></li>
+
       @if(Auth::user()->can('manage-users'))
       <li class="menu-header">Users</li>
       <li class="{{ Request::route()->getName() == 'admin.users' ? ' active' : '' }}"><a class="nav-link" href="{{ route('admin.users') }}"><i class="fa fa-users"></i> <span>Users</span></a></li>
