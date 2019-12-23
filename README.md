@@ -24,10 +24,6 @@ Or if your database is FRESH and you haven't done any work yet, then it's safe t
 php artisan migrate:refresh --seed
 ```
 
-Note that seeding the database is compulsory as it will create the necessary roles and permissions for the user CRUD provided by the project.
-
-Visit <div style="display: inline">http://yoursite.com/login</div> to sign in using below credentials:
-
 
 #### Demo Admin Login
 *  Email: qwe@qwe.com
