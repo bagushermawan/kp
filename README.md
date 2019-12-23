@@ -8,7 +8,7 @@ Install composer packages:
 composer global require "laravel/installer"
 ```
 ```shell
-composer update
+composer install
 ```
 
 After that, run all migrations and seed the database:
@@ -19,7 +19,7 @@ php artisan migrate
 php artisan db:seed
 ```
 
-Or if your database is fresh and you haven't done any work yet, then it's safe to call the commands in a single line:
+Or if your database is FRESH and you haven't done any work yet, then it's safe to call the commands in a single line:
 ```shell
 php artisan migrate:refresh --seed
 ```
