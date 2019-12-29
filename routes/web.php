@@ -37,3 +37,9 @@ Route::get('users/auth', function() {
 
 // Category
 Route::get("/category", "CategoryController@index")->name('category');
+Route::get('/category/create', 'CategoryController@create')->name('category.create');
+Route::post('/category/store', 'CategoryController@store')->name('category.store');
+
+
+// Product
+Route::get("/product", "ProductController@index")->name('product');

@@ -13,14 +13,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $daftar_product = \App\Product::paginate(2);
+        return view("product.index", ["daftar_product" => $daftar_product]);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //

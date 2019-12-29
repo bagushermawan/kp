@@ -9,7 +9,7 @@
         @csrf
       <div class="form-group">
         <label for="email">Email</label>
-        <input aria-describedby="emailHelpBlock" id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" placeholder="Registered email address" tabindex="1" value="{{ old('email') }}" autofocus>
+        <input aria-describedby="emailHelpBlock" id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" placeholder="qwe@qwe.com" tabindex="1" value="{{ old('email') }}" autofocus>
         <div class="invalid-feedback">
           {{ $errors->first('email') }}
         </div>

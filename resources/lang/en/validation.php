@@ -131,6 +131,9 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'name' => [
+            'required' => 'Nama Category harus diisi slur ..!',
+        ],
     ],
 
     /*

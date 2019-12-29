@@ -16,7 +16,7 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Reg. Date</th>
-                                <th></th>
+                                <th>Action</th>
                             </tr>
                             <tr v-for="user, index in users">
                                 <td>{{ user.name }}</td>
