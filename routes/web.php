@@ -39,6 +39,10 @@ Route::get('users/auth', function() {
 Route::get("/category", "CategoryController@index")->name('category');
 Route::get('/category/create', 'CategoryController@create')->name('category.create');
 Route::post('/category/store', 'CategoryController@store')->name('category.store');
+Route::get('category/edit/{id}', 'CategoryController@edit')->name('category.edit');
+Route::put('category/update/{id}', 'CategoryController@update')->name('category.update');
+Route::get('/category/destroy/{id}', 'CategoryController@destroy')->name('category.destroy');
+
 
 
 // Product

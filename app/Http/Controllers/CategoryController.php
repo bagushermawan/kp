@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Category;
 use Session;
 use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class CategoryController extends Controller
 {
@@ -16,7 +18,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $daftar_kategori = \App\Category::paginate(3);
+        $daftar_kategori = \App\Category::paginate(5);
         $count=\App\Category::count();
         return view("category.index", ["daftar_kategori" => $daftar_kategori], compact('count'));
         
@@ -57,19 +59,31 @@ class CategoryController extends Controller
 
     public function edit($id)
     {
-        //
+        $category = Category::find($id);
+        if(!$category){
+            return abort(404);
+        }
+        return view('category.edit')->with('category', $category)->with('category', $category);
     }
 
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:191',
+        ]);
+
+        $category = Category::find($id);
+        $category->name = $request->name;
+        $category->save();
+        Session::flash('sukses','Category berhasil di update!');
+        return redirect()->route('category');
     }
 
     public function destroy($id)
     {
         $category = Category::find($id);
         $category->delete();
-        Session::flash('sukses','Category berhasil dihapus!');
+        Session::flash('delete','Category berhasil dihapus!');
         return redirect()->route('category');
     }
 }
