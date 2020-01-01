@@ -68,7 +68,7 @@ Category
                             @endforeach
                         </tbody>
                     </table>
-                    <button onclick="klik()">Klik aku mas!</button>
+                    <!-- <button onclick="klik()">Klik aku mas!</button> -->
                     {{$daftar_kategori->links()}}
                     <!-- <div class="text-center p-3 text-muted">
                         <h5>No Results</h5>

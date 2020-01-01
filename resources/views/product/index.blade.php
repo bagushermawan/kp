@@ -7,15 +7,44 @@ Product
 @section('content')
 <section class="section">
   <div class="section-header">
-    <h1>Manage Product</h1>
+    <h1>All Products</h1>
   </div>
+
   <div class="section-body">
-    <div class="col-md-12">
+  @if($errors->any())
+          <div class="alert alert-danger">
+              <p><strong>Opps Something went wrong</strong></p>
+              <ul>
+              @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+              @endforeach
+              </ul>
+          </div>
+        @endif
+        @if ($message = Session::get('sukses'))
+        <div class="alert alert-success alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button> 
+            <strong>{{ $message }}</strong>
+        </div>
+        @endif
+        @if ($message = Session::get('gagal'))
+        <div class="alert alert-danger alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button> 
+            <strong>{{ $message }}</strong>
+        </div>
+        @endif
+        @if ($message = Session::get('delete'))
+        <div class="alert alert-danger alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button> 
+            <strong>{{ $message }}</strong>
+        </div>
+        @endif
+  <div>
         <div class="card">
             <div class="card-header">
-                <h4>Users</h4>
+                <h4>Product <span>({{$count}})</span></h4>
                 <div class="card-header-action">
-                    <a  class="btn btn-primary">Add <i class="fas fa-plus"></i></a>
+                    <a  href="{{route('product.create')}}" class="btn btn-primary">Add <i class="fas fa-plus"></i></a>
                 </div>
             </div>
             <div class="card-body p-0">
@@ -23,41 +52,37 @@ Product
                     <table class="table table-striped">
                         <tbody>
                             <tr>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Reg. Date</th>
-                                <th>Action</th>
+                                <th style="width: 5%;"><center>No</center></th>
+                                <th style="width: 15%;">Title</th>
+                                <th style="width: 30%;">Description</th>
+                                <th style="width: 20%;"><center>Image</center></th>
+                                <th style="width: 10%;">Price</th>
+                                <th style="width: 10%;">Stock</th>
+                                <th style="width: 10%;"><center>Action</center></th>
                             </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td class="text-right">
-                                    <button class="btn btn-danger">
-                                        <i class="fa fa-trash"></i>
-                                    </button>
-                                    <a class="btn btn-primary">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
-                                </td>
+                            @foreach($daftar_product as $no => $product)
+                            <tr style="height:120px";>
+                                <td><center>{{++$no + ($daftar_product->currentPage()-1) * $daftar_product->perPage()}}</center></td>
+                                <td>{{ $product->title }}</td>
+                                <td>{{ $product->description }}</td>
+                                <td><center><img src="{{ $product->image }}"></center></td>
+                                <td>Rp {{ $product->price }}</td>
+                                <td>{{ $product->stock }}</td>
+
+                                <td class="text-right"><center>
+                                    <a href="{{ route('product.destroy', ['id'=>$product->id])}}"><button class="btn btn-danger"><i class="fa fa-trash"></i></button></a>
+                                    <a href="#"><button class="btn btn-primary"><i class="fa fa-edit"></i></button></a>
+                                </center></td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
-                    <div class="text-center p-3 text-muted">
-                        <h5>No Results</h5>
-                        <p>Looks like you have not added any users yet!</p>
-                    </div>
-                </div>
-                <div class="text-center p-4 text-muted">
-                    <h5>Loading</h5>
-                    <p>Please wait, data is being loaded...</p>
+                    <!-- <button onclick="klik()">Klik aku mas!</button> -->
+                    {{$daftar_product->links()}}
                 </div>
             </div>
         </div>
-        <div class="text-center">
-            <button class="btn btn-primary"><span>Loading <i class="fas fa-spinner fa-spin"></i></span><span>Load More</span></button>
-        </div>
     </div>
-</div>
+    </div>
 </section>
 @endsection

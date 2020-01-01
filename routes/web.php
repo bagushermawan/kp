@@ -47,3 +47,8 @@ Route::get('/category/destroy/{id}', 'CategoryController@destroy')->name('catego
 
 // Product
 Route::get("/product", "ProductController@index")->name('product');
+Route::get('/product/create', 'ProductController@create')->name('product.create');
+Route::post('/product/store', 'ProductController@store')->name('product.store');
+// Route::get('product/edit/{id}', 'ProductController@edit')->name('product.edit');
+// Route::put('product/update/{id}', 'ProductController@update')->name('product.update');
+Route::get('/product/destroy/{id}', 'ProductController@destroy')->name('product.destroy');

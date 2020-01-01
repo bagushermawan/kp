@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Product;
+use Session;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -13,67 +17,65 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $daftar_product = \App\Product::paginate(2);
-        return view("product.index", ["daftar_product" => $daftar_product]);
+        $daftar_product = \App\Product::paginate(5);
+        $count=\App\Product::count();
+        return view("product.index", ["daftar_product" => $daftar_product], compact('count'));
     }
     public function create()
     {
-        //
+        return view('product.create');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
-    }
+        $this->validate($request,[
+            'title' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'stock' => 'required',
+            'image' => 'required',
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
+        ]);
+
+        $product = new Product();
+        if($request->has('image')){
+            Storage::delete($product->image);
+            $file = $request->image->store('public/product_images');
+            $product->image = $file;
+        }
+        $product->title = $request->title;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->stock = $request->stock;
+
+
+    	if(!$product->save()){
+            Session::flash('gagal','Yamaap, Product gagal disimpan!!');
+            return redirect()->route('product.create');
+        }
+
+        Session::flash('sukses','Yeahh, Product berhasil disimpan!');
+        return redirect()->route('product');
+
+        return back()->withErrors(['name.required', 'Name is required']);
+    }
     public function show($id)
     {
         //
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        $product = Product::find($id);
+        $product->delete();
+        Session::flash('delete','Product berhasil dihapus!');
+        return redirect()->route('product');
     }
 }
