@@ -108,8 +108,28 @@ Category
                     'success'
                 );
             })
-
     } 
+    </script>
+    <script>
+        function confirmDelete(id) {
+            swal({
+                 title: 'Apakah Anda Yakin?',
+                  text: "Anda Tidak Akan Dapat Mengembalikannya!",
+                  type: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Yes, delete it!',
+                  reverseButtons:true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        (id).submit();
+                    } else {
+                        swal("Cancelled Successfully");
+                    }
+                });
+        }
     </script>
 @endsection
 

@@ -30,23 +30,24 @@ class ProductController extends Controller
         $this->validate($request,[
             'title' => 'required',
             'description' => 'required',
+            'image' => 'required',
             'price' => 'required',
             'stock' => 'required',
-            'image' => 'required',
 
 
         ]);
 
         $product = new Product();
-        if($request->has('image')){
-            Storage::delete($product->image);
-            $file = $request->image->store('public/product_images');
-            $product->image = $file;
-        }
         $product->title = $request->title;
         $product->description = $request->description;
         $product->price = $request->price;
         $product->stock = $request->stock;
+        if($request->file('image')){
+            $image_path = $request->file('image')->store('product_images', 'public');
+            $product->image = $image_path;
+            // dd($image_path);
+        }
+           
 
 
     	if(!$product->save()){

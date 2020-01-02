@@ -65,7 +65,18 @@ Product
                                 <td><center>{{++$no + ($daftar_product->currentPage()-1) * $daftar_product->perPage()}}</center></td>
                                 <td>{{ $product->title }}</td>
                                 <td>{{ $product->description }}</td>
-                                <td><center><img src="{{ $product->image }}"></center></td>
+                                <td>
+                                    <center>@if($product->image)
+                                    <img src="{{$product->image}}"/>
+
+                                        @elseif($product->image)
+                                        <img src="{{asset('/storage/'.$product->image)}}" width="70px" />
+
+                                        @else
+                                        N/A
+                                        @endif
+                                        </center>
+                                </td>
                                 <td>Rp {{ $product->price }}</td>
                                 <td>{{ $product->stock }}</td>
 

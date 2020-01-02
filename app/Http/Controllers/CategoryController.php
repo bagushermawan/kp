@@ -84,6 +84,6 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $category->delete();
         Session::flash('delete','Category berhasil dihapus!');
-        return redirect()->route('category');
+        return redirect()->route('category')->with('success','User deleted successfully');
     }
 }
