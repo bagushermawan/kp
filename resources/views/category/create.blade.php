@@ -25,6 +25,9 @@ Create Category
         <div class="card">
             <div class="card-header">
                 <h4>Add a New Category</h4>
+                <div class="card-header-action">
+                        <a  href="{{route('category')}}" class="btn btn-primary"><i class="fa fa-arrow-left"></i>&nbsp;All Category</a>
+                </div>
             </div>
             <div class="card-body">
             <form class="form-horizontal form-label-left" method="post" action="{{ route('category.store') }}">

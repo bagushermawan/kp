@@ -7,7 +7,17 @@ Product
 @section('content')
 <section class="section">
   <div class="section-header">
-    <h1>All Products</h1>
+      <h1>All Products</h1>
+      <div class="section-header-breadcrumb">
+      <form action="{{ route('product.search') }}" method="get">
+          <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search" name="q">
+              <div class="input-group-append">
+                  <button class="btn btn-primary" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+              </div>
+          </div>
+</form>
+      </div>
   </div>
 
   <div class="section-body">
@@ -42,7 +52,7 @@ Product
   <div>
         <div class="card">
             <div class="card-header">
-                <h4>Product <span>({{$count}})</span></h4>
+                <h4>Product <span>({{$daftar_product->count()}})</span></h4>
                 <div class="card-header-action">
                     <a  href="{{route('product.create')}}" class="btn btn-primary">Add <i class="fas fa-plus"></i></a>
                 </div>
@@ -55,7 +65,8 @@ Product
                                 <th style="width: 5%;"><center>No</center></th>
                                 <th style="width: 15%;">Title</th>
                                 <th style="width: 30%;">Description</th>
-                                <th style="width: 20%;"><center>Image</center></th>
+                                <th style="width: 10%;"><center>Image</center></th>
+                                <th style="width: 10%;">Category</th>
                                 <th style="width: 10%;">Price</th>
                                 <th style="width: 10%;">Stock</th>
                                 <th style="width: 10%;"><center>Action</center></th>
@@ -66,23 +77,26 @@ Product
                                 <td>{{ $product->title }}</td>
                                 <td>{{ $product->description }}</td>
                                 <td>
-                                    <center>@if($product->image)
-                                    <img src="{{$product->image}}"/>
-
-                                        @elseif($product->image)
-                                        <img src="{{asset('/storage/'.$product->image)}}" width="70px" />
-
-                                        @else
-                                        N/A
-                                        @endif
-                                        </center>
+                                    <center>
+                                    @if($product->image)
+                                    <img src="http://localhost/kape/storage/app/public/{{$product->image}}"  width="100%" height="100px"/>
+                                    @else
+                                    <img src="{{asset('/storage/'.$product->image)}}" width="100px" height="100px"/>
+                                    @endif
+                                    </center>
+                                </td>
+                                <td><ul class="pl-3">
+                                @foreach($product->categories as $c)
+                                <li>{{$c->name}}</li>
+                                @endforeach 
+                                </ul>
                                 </td>
                                 <td>Rp {{ $product->price }}</td>
                                 <td>{{ $product->stock }}</td>
 
                                 <td class="text-right"><center>
                                     <a href="{{ route('product.destroy', ['id'=>$product->id])}}"><button class="btn btn-danger"><i class="fa fa-trash"></i></button></a>
-                                    <a href="#"><button class="btn btn-primary"><i class="fa fa-edit"></i></button></a>
+                                    <a href="{{ route('product.edit', ['id'=>$product->id])}}"><button class="btn btn-primary"><i class="fa fa-edit"></i></button></a>
                                 </center></td>
                             </tr>
                             @endforeach

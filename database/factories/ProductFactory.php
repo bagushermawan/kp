@@ -17,10 +17,11 @@ use Faker\Generator as Faker;
 
 $factory->define(Product::class, function (Faker $faker) {
     return [
-        'title' => $faker->name,
+        'title' => $faker->cityPrefix,
         'description' => $faker->sentence($nbWords = 6, $variableNbWords = true),
         'price' => $faker->numberBetween($min = 1000, $max = 9000),
-        'image' => $faker->image($dir = '/public/storage/product_images', $width = 100, $height = 100),
+        'image' => $faker->image('public/storage/',$width=100,$height=100, null, false) ,
         'stock' => $faker->numberBetween($min =5, $max =20),
+
     ];
 });

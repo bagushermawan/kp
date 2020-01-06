@@ -134,6 +134,9 @@ return [
         'name' => [
             'required' => 'Nama Category harus diisi slur ..!',
         ],
+        'image' => [
+            'required' => 'Image atau gambar harus diisi y ..'
+        ]
     ],
 
     /*

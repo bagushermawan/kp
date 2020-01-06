@@ -12,18 +12,22 @@ class CategoryTableSeeder extends Seeder
      */
     public function run()
     {
-        // $kategori1=new Category;
-        // $kategori1->name="Laptop";
-        // $kategori1->save();
+        $kategori1=new Category;
+        $kategori1->name="Buku";
+        $kategori1->save();
 
-        // $kategori2=new Category;
-        // $kategori2->name="Aksesoris";
-        // $kategori2->save();
+        $kategori2=new Category;
+        $kategori2->name="CD/DVD";
+        $kategori2->save();
 
-        // $kategori3=new Category;
-        // $kategori3->name="Mouse";
-        // $kategori3->save();
-        factory(App\Category::class, 10)->create();                
+        $kategori3=new Category;
+        $kategori3->name="Poster";
+        $kategori3->save();
+
+        $kategori4=new Category;
+        $kategori4->name="Kaos";
+        $kategori4->save();
+        // factory(App\Category::class, 5)->create();                
 
     }
 }

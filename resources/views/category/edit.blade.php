@@ -13,6 +13,9 @@ Edit Category ({{ $category->name }})
   <div class="card">
             <div class="card-header">
                 <h4>Update Category</h4>
+                    <div class="card-header-action">
+                        <a  href="{{route('category')}}" class="btn btn-primary"><i class="fa fa-arrow-left"></i>&nbsp;All Categpry</a>
+                    </div>
             </div>
             <div class="card-body">
             <form class="form-horizontal form-label-left" method="post" action="{{ route('category.update', ['id' => $category->id]) }}">

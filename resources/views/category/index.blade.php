@@ -8,6 +8,16 @@ Category
 <section class="section">
   <div class="section-header">
     <h1>All Categories</h1>
+    <div class="section-header-breadcrumb">
+        <form action="{{ route('category.search') }}" method="get">
+          <div class="input-group">
+              <input type="search" class="form-control" placeholder="Search" name="q">
+              <div class="input-group-append">
+                  <button class="btn btn-primary" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+              </div>
+          </div>
+          </form>
+      </div>
   </div>
 
   <div class="section-body">
@@ -42,7 +52,7 @@ Category
   <div>
         <div class="card">
             <div class="card-header">
-                <h4>Category <span>({{$count}})</span></h4>
+                <h4>Category (<span>{{$daftar_kategori->total()}}</span>)</h4>
                 <div class="card-header-action">
                     <a  href="{{route('category.create')}}" class="btn btn-primary">Add <i class="fas fa-plus"></i></a>
                 </div>
@@ -60,6 +70,7 @@ Category
                             <tr>
                                 <td><center>{{++$no + ($daftar_kategori->currentPage()-1) * $daftar_kategori->perPage()}}</center></td>
                                 <td>{{ $category->name }}</td>
+
                                 <td class="text-right"><center>
                                     <a href="{{ route('category.destroy', ['id'=>$category->id])}}"><button class="btn btn-danger"><i class="fa fa-trash"></i></button></a>
                                     <a href="{{ route('category.edit', ['id'=>$category->id])}}"><button class="btn btn-primary"><i class="fa fa-edit"></i></button></a>

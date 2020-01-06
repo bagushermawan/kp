@@ -18,14 +18,21 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $daftar_kategori = \App\Category::paginate(5);
-        $count=\App\Category::count();
-        return view("category.index", ["daftar_kategori" => $daftar_kategori], compact('count'));
+        $daftar_kategori = \App\Category::paginate(2);
+        return view("category.index", ["daftar_kategori" => $daftar_kategori]);
         
+    }
+    public function search(Request $request)
+    {
+        $search=$request->get('q');
+        $daftar_kategori=DB::table('categories')->where('name', 'like', '%'.$search.'%')->paginate(3);
+        $count= Category::count();
+        return view('category.index', ['daftar_kategori'=>$daftar_kategori,],compact('count'));
     }
 
     public function create()
     {
+        $daftar_kategori=\App\Category::all();
         return view('category.create');
         
     }
@@ -86,4 +93,11 @@ class CategoryController extends Controller
         Session::flash('delete','Category berhasil dihapus!');
         return redirect()->route('category')->with('success','User deleted successfully');
     }
+    public function ajaxSearch(Request $request){
+        $keyword = $request->get('q');
+        $categories = \App\Category::where("name", "LIKE", "%$keyword%")->get();
+        return $categories;
+       }
+       
+       
 }
