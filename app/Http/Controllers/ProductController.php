@@ -20,6 +20,8 @@ class ProductController extends Controller
     {
         $daftar_product = Product::paginate(5);
         $count = Product::count();
+        // dd($daftar_product->categories->name);
+
         return view("product.index", ["daftar_product" => $daftar_product], compact('count'));
     }
     public function search(Request $request)

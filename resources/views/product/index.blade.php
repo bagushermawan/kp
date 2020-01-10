@@ -52,7 +52,7 @@ Product
   <div>
         <div class="card">
             <div class="card-header">
-                <h4>Product <span>({{$daftar_product->count()}})</span></h4>
+                <h4>Product <span>({{$daftar_product->total()}})</span></h4>
                 <div class="card-header-action">
                     <a  href="{{route('product.create')}}" class="btn btn-primary">Add <i class="fas fa-plus"></i></a>
                 </div>

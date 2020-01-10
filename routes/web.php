@@ -42,6 +42,7 @@ Route::post('/category/store', 'CategoryController@store')->name('category.store
 Route::get('category/edit/{id}', 'CategoryController@edit')->name('category.edit');
 Route::put('category/update/{id}', 'CategoryController@update')->name('category.update');
 Route::get('/category/destroy/{id}', 'CategoryController@destroy')->name('category.destroy');
+Route::get('/category/search','CategoryController@ajaxSearch');
 Route::get('/category/searchh','CategoryController@search')->name('category.search');
 
 
