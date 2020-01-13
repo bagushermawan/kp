@@ -15,11 +15,6 @@ class UserController extends Controller
     {
         $this->authorizeResource(User::class);
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Request $request)
     {
         $this->authorize(User::class, 'index');
@@ -34,24 +29,14 @@ class UserController extends Controller
             return response()->json($users);
         }
         return view('admin.users.index');
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('admin.users.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(UserAddRequest $request)
     {
         $user = User::create($request->all());

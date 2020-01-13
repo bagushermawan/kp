@@ -106,7 +106,7 @@ Create Product
   $('#categories').select2({
     placeholder: 'Select Category',
     ajax: {
-      url: 'http://localhost/kape/public/category/search',
+      url: "{{route('category.ajaxsearch')}}",
       dataType: 'json',
       processResults: function (data) {
         return {
@@ -121,7 +121,6 @@ Create Product
       cache: true
     }
   });
-
 </script>
 
 @endsection

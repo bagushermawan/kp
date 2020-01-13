@@ -15,6 +15,9 @@ $app = new Illuminate\Foundation\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 );
 
+// header('Access-Control-Allow-Origin: http://dokterpost.com');
+// header('Access-Control-Allow-Methods: http://dokterpost.com');
+// header('Access-Control-Allow-Headers: http://dokterpost.com');
 /*
 |--------------------------------------------------------------------------
 | Bind Important Interfaces

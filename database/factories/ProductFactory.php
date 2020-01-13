@@ -20,7 +20,7 @@ $factory->define(Product::class, function (Faker $faker) {
         'title' => $faker->cityPrefix,
         'description' => $faker->sentence($nbWords = 6, $variableNbWords = true),
         'price' => $faker->numberBetween($min = 1000, $max = 9000),
-        'image' => $faker->image('public/storage/',$width=100,$height=100, null, false) ,
+        'image' => $faker->image('storage/app/public/',$width=100,$height=100, null, false) ,
         'stock' => $faker->numberBetween($min =5, $max =20),
 
     ];

@@ -34,16 +34,19 @@ Route::get('users/auth', function() {
     return response()->json(['user' => Auth::check() ? Auth::user() : false]);
 });
 
+Route::get("/admin/tes", "TesController@index")->name('tes');
+
+
 
 // Category
-Route::get("/category", "CategoryController@index")->name('category');
-Route::get('/category/create', 'CategoryController@create')->name('category.create');
+Route::get("/admin/category", "CategoryController@index")->name('category');
+Route::get('/admin/category/create', 'CategoryController@create')->name('category.create');
 Route::post('/category/store', 'CategoryController@store')->name('category.store');
-Route::get('category/edit/{id}', 'CategoryController@edit')->name('category.edit');
-Route::put('category/update/{id}', 'CategoryController@update')->name('category.update');
-Route::get('/category/destroy/{id}', 'CategoryController@destroy')->name('category.destroy');
-Route::get('/category/search','CategoryController@ajaxSearch');
-Route::get('/category/searchh','CategoryController@search')->name('category.search');
+Route::get('/admincategory/edit/{id}', 'CategoryController@edit')->name('category.edit');
+Route::put('/admincategory/update/{id}', 'CategoryController@update')->name('category.update');
+Route::get('/admin/category/destroy/{id}', 'CategoryController@destroy')->name('category.destroy');
+Route::get('/admin/category/search','CategoryController@ajaxSearch')->middleware('cors')->name('category.ajaxsearch');
+Route::get('/admin/category/searchh','CategoryController@search')->name('category.search');
 
 
 
@@ -51,10 +54,10 @@ Route::get('/category/searchh','CategoryController@search')->name('category.sear
 
 
 // Product
-Route::get("/product", "ProductController@index")->name('product');
-Route::get('/product/create', 'ProductController@create')->name('product.create');
-Route::post('/product/store', 'ProductController@store')->name('product.store');
+Route::get("/admin/product", "ProductController@index")->name('product');
+Route::get('/admin/product/create', 'ProductController@create')->name('product.create');
+Route::post('/admin/product/store', 'ProductController@store')->name('product.store');
 Route::get('product/edit/{id}', 'ProductController@edit')->name('product.edit');
 Route::put('product/update/{id}', 'ProductController@update')->name('product.update');
-Route::get('/product/destroy/{id}', 'ProductController@destroy')->name('product.destroy');
-Route::get('/product/search','ProductController@search')->name('product.search');
+Route::get('/admin/product/destroy/{id}', 'ProductController@destroy')->name('product.destroy');
+Route::get('/admin/product/search','ProductController@search')->name('product.search');

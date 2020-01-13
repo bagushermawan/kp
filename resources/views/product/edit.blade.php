@@ -24,7 +24,7 @@ Edit Product
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Edit Product -> <u>({{$product->title}})</u></h4>
+                        <h4>Edit Product -> <span class="badge badge-light"><font color="grey">{{$product->title}}</font></span></h4>
                         <div class="card-header-action">
                              <a  href="{{route('product')}}" class="btn btn-primary"><i class="fa fa-arrow-left"></i>&nbsp;All Product</a>
                         </div>
@@ -51,7 +51,7 @@ Edit Product
                                 <div class="col-sm-12 col-md-7">
                                 <small class="text-muted">Current image</small><br>
                             @if($product->image)
-                            <img src="{{asset('storage/' . $product->image)}}" width="96px" />
+                            <img src="{{asset('storage/app/public/' . $product->image)}}" width="96px" />
                             @endif
                                     <br><br><input type="file" class="form-control" placeholder="Laptop, Aksesoris, .."
                                         name="image" value="{{ $product->image }}">
@@ -104,7 +104,7 @@ Edit Product
 <script>
 $('#categories').select2({
  ajax: {
- url: 'http://localhost/kape/public/category/search',
+ url: '{{route('category.ajaxsearch')}}',
  processResults: function(data){
  return {
  results: data.map(function(item){return {id: item.id, text:

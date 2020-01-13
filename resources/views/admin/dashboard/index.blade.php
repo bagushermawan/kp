@@ -13,14 +13,14 @@ Dashboard
   <div class="section-body">
   <button onclick="klik()">Klik aku mas!</button>
   </div>
-  <script type="text/javascript">
-function klik(){
-swal(
-  'Good job!',
-  'You clicked the button!',
-  'info'
-)
-	}
-</script>
+  <script type = "text/javascript" >
+      function klik() {
+          swal(
+              'Good job!',
+              'You clicked the button!',
+              'info'
+          )
+      } 
+  </script>
 </section>
 @endsection

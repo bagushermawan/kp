@@ -8,28 +8,17 @@ use Session;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
-
 class CategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $daftar_kategori = \App\Category::paginate(2);
         return view("category.index", ["daftar_kategori" => $daftar_kategori]);
-        
     }
-    public function search(Request $request)
-    {
-        $search=$request->get('q');
-        $daftar_kategori=DB::table('categories')->where('name', 'like', '%'.$search.'%')->paginate(3);
-        $count= Category::count();
-        return view('category.index', ['daftar_kategori'=>$daftar_kategori,],compact('count'));
-    }
-
     public function create()
     {
         $daftar_kategori=\App\Category::all();
@@ -91,11 +80,18 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $category->delete();
         Session::flash('delete','Category berhasil dihapus!');
-        return redirect()->route('category')->with('success','User deleted successfully');
+        return redirect()->route('category');
+    }
+    public function search(Request $request)
+    {
+        $search=$request->get('q');
+        $daftar_kategori=DB::table('categories')->where('name', 'like', '%'.$search.'%')->paginate(3);
+        $count= Category::count();
+        return view('category.index', ['daftar_kategori'=>$daftar_kategori,],compact('count'));
     }
     public function ajaxSearch(Request $request){
         $keyword = $request->get('q');
-        $categories = \App\Category::where("name", "LIKE", "%$keyword%")->get();
+        $categories = Category::where("name", "LIKE", "%$keyword%")->get();
         return $categories;
        }
        

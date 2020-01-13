@@ -11,27 +11,19 @@ use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
+        $categories=Category::all();
         $daftar_product = Product::paginate(5);
         $count = Product::count();
         // dd($daftar_product->categories->name);
 
         return view("product.index", ["daftar_product" => $daftar_product], compact('count'));
     }
-    public function search(Request $request)
-    {
-        $search=$request->get('q');
-        $daftar_product=DB::table('products')->where('title', 'like', '%'.$search.'%')->paginate(3);
-        $count= Product::count();
-        return view('product.index', ['daftar_product'=>$daftar_product,],compact('count'));
-    }
-
     public function create()
     {
     	$category = Category::all();
@@ -48,7 +40,7 @@ class ProductController extends Controller
             'image' => 'required',
             'price' => 'required',
             'stock' => 'required',
-            'category_id' => 'required',
+            // 'category_id' => 'required',
 
         ]);
 
@@ -119,8 +111,16 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product = Product::find($id);
+        
         $product->delete();
         Session::flash('delete','Product berhasil dihapus!');
         return redirect()->route('product');
+    }
+    public function search(Request $request)
+    {
+        $search=$request->get('q');
+        $daftar_product=DB::table('products')->where('title', 'like', '%'.$search.'%')->paginate(3);
+        $count= Product::count();  
+        return view('product.index', ['daftar_product'=>$daftar_product],['categories'=>$categories]);
     }
 }

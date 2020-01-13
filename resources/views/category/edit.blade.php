@@ -12,7 +12,7 @@ Edit Category ({{ $category->name }})
   <div class="section-body">
   <div class="card">
             <div class="card-header">
-                <h4>Update Category</h4>
+                 <h4>Edit Category -> <span class="badge badge-light"><font color="grey">{{$category->name}}</font></span></h4>
                     <div class="card-header-action">
                         <a  href="{{route('category')}}" class="btn btn-primary"><i class="fa fa-arrow-left"></i>&nbsp;All Categpry</a>
                     </div>
