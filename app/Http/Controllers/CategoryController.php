@@ -85,7 +85,7 @@ class CategoryController extends Controller
     public function search(Request $request)
     {
         $search=$request->get('q');
-        $daftar_kategori=DB::table('categories')->where('name', 'like', '%'.$search.'%')->paginate(3);
+        $daftar_kategori=DB::table('categories')->where('name', 'like', '%'.$search.'%')->whereNull('deleted_at')->paginate(3);
         $count= Category::count();
         return view('category.index', ['daftar_kategori'=>$daftar_kategori,],compact('count'));
     }

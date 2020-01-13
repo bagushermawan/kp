@@ -24,6 +24,7 @@
     </div>
     <div class="toast-body">
       Hello, world! This is a toast message.
+      {{ dd(request()->route()->getAction()['as']) }}
     </div>
   </div>
 </div>

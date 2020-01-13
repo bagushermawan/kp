@@ -9,14 +9,14 @@ Product
   <div class="section-header">
       <h1>All Products</h1>
       <div class="section-header-breadcrumb">
-      <form action="{{ route('product.search') }}" method="get">
+      <!-- <form action="{{ route('product.search') }}" method="get"> -->
           <div class="input-group">
               <input type="text" class="form-control" placeholder="Search" name="q">
               <div class="input-group-append">
                   <button class="btn btn-primary" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
               </div>
           </div>
-</form>
+<!-- </form> -->
       </div>
   </div>
 
@@ -52,7 +52,7 @@ Product
   <div>
         <div class="card">
             <div class="card-header">
-                <h4>Product <span>({{$daftar_product->total()}})</span></h4>
+                <h4>Product <i class="fas fa-angle-double-right"></i> ({{$daftar_product->total()}})</h4>
                 <div class="card-header-action">
                     <a  href="{{route('product.create')}}" class="btn btn-primary">Add <i class="fas fa-plus"></i></a>
                 </div>

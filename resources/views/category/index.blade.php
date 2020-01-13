@@ -11,7 +11,7 @@ Category
     <div class="section-header-breadcrumb">
         <form action="{{ route('category.search') }}" method="get">
           <div class="input-group">
-              <input type="search" class="form-control" placeholder="Search" name="q">
+              <input type="text" class="form-control" placeholder="Search" name="q">
               <div class="input-group-append">
                   <button class="btn btn-primary" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
               </div>
@@ -52,7 +52,7 @@ Category
   <div>
         <div class="card">
             <div class="card-header">
-                <h4>Category (<span>{{$daftar_kategori->total()}}</span>)</h4>
+                <h4>Category <i class="fas fa-angle-double-right"></i> ({{$daftar_kategori->total()}})</h4>
                 <div class="card-header-action">
                     <a  href="{{route('category.create')}}" class="btn btn-primary">Add <i class="fas fa-plus"></i></a>
                 </div>

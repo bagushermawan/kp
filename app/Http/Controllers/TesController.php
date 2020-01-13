@@ -8,6 +8,17 @@ class TesController extends Controller
 {
     public function index()
     {
-        return view("tes.index");   
+        $routeArray = app('request')->route()->getAction();
+        $controllerAction = class_basename($routeArray['controller']);
+        list($controller, $action) = explode('@', $controllerAction);
+
+
+        // print_r($controller);
+        // exit;
+
+        dd($controller);
+
+
+        // return $next($request); 
     }
 }
