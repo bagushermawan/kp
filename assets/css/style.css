@@ -83,6 +83,8 @@
     --card-bottom:#f9f9f9;
     --table:;
     --navbar-bg:#7ebad3;
+    --card-body:#fff;
+    --text-card:#34395e;
 }
 
 [data-theme="dark"] {
@@ -101,6 +103,8 @@
     --card-bottom:#161625;
     --table:#999999;
     --navbar-bg:#4C707F;
+    --card-body:#717171;
+    --text-card:#fff;
 
 
 
@@ -165,6 +169,7 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
   /* kastem end*/
 a {
   color: #6777ef;
@@ -314,7 +319,7 @@ select.form-control:not([size]):not([multiple]) {
   .form-group .control-label,
   .form-group > label {
     font-weight: 600;
-    color: #34395e;
+    color: var(--text-card);
     font-size: 12px;
     letter-spacing: .5px; }
   .form-group.floating-addon {
@@ -705,13 +710,13 @@ select.form-control:not([size]):not([multiple]) {
 /* 3.5 Card */
 .card {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
-  background-color: #fff;
+  /* background-color: var(--card-body); */
   border-radius: 3px;
   border: none;
   position: relative;
   margin-bottom: 30px; }
   .card .card-header, .card .card-body, .card .card-footer {
-    background-color: transparent;
+    background-color: var(--card-body);
     padding: 20px 25px; }
   .card .navbar {
     position: static; }

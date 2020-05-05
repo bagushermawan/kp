@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\User;
+use Roles;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Hash;
@@ -28,6 +29,8 @@ class UsersTableSeeder extends Seeder
         ]);
         $adminUser->assignRole($adminRole);
 
+
+
         $editorRole = Role::create(['name' => 'Editor']);
         $editorPermissions = ['manage-users', 'view-users'];
         foreach($editorPermissions as $ep)
@@ -41,6 +44,8 @@ class UsersTableSeeder extends Seeder
             'password' => Hash::make('1234')
         ]);
         $editorUser->assignRole($editorRole);
+
+
 
         $userRole = Role::create(['name' => 'User']);
         $generalUser = User::create([

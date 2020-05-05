@@ -15,19 +15,21 @@
             </a>
         </li>
 
+        @if(Auth::user()->can('manage-users'))
         <li class="menu-header">List</li>
         <li class="{{ Request::route()->getAction()['as'] == 'category' ? ' active' : '' }}">
           <a class="{{ Request::route()->getName() == 'category' ? 'nav-link beep beep-sidebar' :''}}" href="{{ route('category') }}">
-            <i class="fa fa-columns"></i>
+          <i class="fa fa-list"></i>
             <span>Category</span>
           </a>
         </li>
         <li class="{{ Request::route()->getName() == 'product' ? ' active'  : '' }}">
           <a class="{{ Request::route()->getName() == 'product' ? 'nav-link beep beep-sidebar' :''}}" href="{{ route('product') }}">
-            <i class="fa fa-columns"></i>
+            <i class="fa fa-th"></i>
             <span>Product</span>
           </a>
         </li>
+        @endif
 
         @if(Auth::user()->can('manage-users'))
         <li class="menu-header">Users</li>

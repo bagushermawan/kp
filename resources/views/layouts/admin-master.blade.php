@@ -72,7 +72,8 @@ function switchTheme(e) {
     }    
 }
 
-toggleSwitch.addEventListener('change', switchTheme, false);</script>
+toggleSwitch.addEventListener('change', switchTheme, false);
+</script>
   @yield('scripts')
 </body>
 </html>

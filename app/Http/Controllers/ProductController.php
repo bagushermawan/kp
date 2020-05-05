@@ -111,16 +111,17 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product = Product::find($id);
-        
         $product->delete();
         Session::flash('delete','Product berhasil dihapus!');
         return redirect()->route('product');
     }
     public function search(Request $request)
     {
+        
         $search=$request->get('q');
         $daftar_product=DB::table('products')->where('title', 'like', '%'.$search.'%')->paginate(3);
         $count= Product::count();  
+        
         return view('product.index', ['daftar_product'=>$daftar_product],['categories'=>$categories]);
     }
 }
