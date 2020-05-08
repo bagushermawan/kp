@@ -49,10 +49,6 @@ Route::get('/admin/category/search','CategoryController@ajaxSearch')->middleware
 Route::get('/admin/category/searchh','CategoryController@search')->name('category.search');
 
 
-
-
-
-
 // Product
 Route::get("/admin/product", "ProductController@index")->name('product');
 Route::get('/admin/product/create', 'ProductController@create')->name('product.create');
@@ -61,3 +57,6 @@ Route::get('product/edit/{id}', 'ProductController@edit')->name('product.edit');
 Route::put('product/update/{id}', 'ProductController@update')->name('product.update');
 Route::get('/admin/product/destroy/{id}', 'ProductController@destroy')->name('product.destroy');
 Route::get('/admin/product/search','ProductController@search')->name('product.search');
+
+
+Route::get("/a", "ShopController@index")->name('frontend.index');

@@ -8,16 +8,16 @@ Product
 <section class="section">
   <div class="section-header">
       <h1>All Products</h1>
-      <div class="section-header-breadcrumb">
-      <!-- <form action="{{ route('product.search') }}" method="get"> -->
+      <!-- <div class="section-header-breadcrumb">
+      <form action="{{ route('product.search') }}" method="get">
           <div class="input-group">
               <input type="text" class="form-control" placeholder="Search" name="q">
               <div class="input-group-append">
                   <button class="btn btn-primary" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
               </div>
           </div>
-<!-- </form> -->
-      </div>
+</form>
+      </div> -->
   </div>
 
   <div class="section-body">
