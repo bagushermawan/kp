@@ -11,7 +11,7 @@ class ShopController extends Controller
 {
     public function index()
     {
-        $produks = Product::all();
+        $produks = Product::paginate(8);
         // dd($produks);
         return view("layouts.frontend-master", ["produks" => $produks]);
 
