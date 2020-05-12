@@ -48,13 +48,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="banner_img d-none d-lg-block">
-                                    <img src="img/banner_img.png" alt="">
-                                </div>
+                               
                             </div>
                         </div>
                     </div>
-                    <div class="slider-counter"></div>
+                    
                 </div>
             </div>
         </div>
