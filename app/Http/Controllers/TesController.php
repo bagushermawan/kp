@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\Product;
+use App\Category;
 
 class TesController extends Controller
 {
@@ -16,8 +19,10 @@ class TesController extends Controller
         // // print_r($controller);
         // // exit;
 
-        // dd($controller);
-        return view("layouts.frontend-master");
+        // $produks = Product::all();
+        $user = User::all();
+        dd($user);
+        // return view("layouts.frontend-master");
 
         // return $next($request); 
     }

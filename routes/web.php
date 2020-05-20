@@ -7,7 +7,7 @@ Route::get('home', function() {
     return redirect(route('admin.dashboard'));
 });
 
-Route::name('admin.')->prefix('admin')->middleware('auth')->group(function() {
+Route::name('admin.')->prefix('admin')->middleware(['auth','cekstatus'])->group(function() {
     Route::get('dashboard', 'DashboardController')->name('dashboard');
 
     Route::get('users/roles', 'UserController@roles')->name('users.roles');
@@ -34,7 +34,10 @@ Route::get('users/auth', function() {
     return response()->json(['user' => Auth::check() ? Auth::user() : false]);
 });
 
-Route::get("/admin/tes", "TesController@index")->name('tes');
+// Route::get("/admin/tes", "TesController@index")->name('tes');
+Route::get("/admin/tes", function(){
+    dd(Auth::user()->hasRole('User'));
+});
 
 
 
@@ -60,3 +63,6 @@ Route::get('/admin/product/search','ProductController@search')->name('product.se
 
 
 Route::get("/a", "ShopController@index")->name('frontend.index');
+// Route::get("/a", function(){
+//     dd(Auth::user()->hasRole('User'));
+// });
